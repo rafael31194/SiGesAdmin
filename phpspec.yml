@@ -1,0 +1,5 @@
+suites:
+    main:
+        namespace: Sigesadmin
+        psr4_prefix: Sigesadmin
+        src_path: app

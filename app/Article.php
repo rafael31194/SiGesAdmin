@@ -5,7 +5,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model {
 
-	protected $fillable = ['title','body','published_at'];
+	protected $fillable = ['title','body','published_at',
+        'user_id'
+    ];
 
     protected $dates = ['published_at'];
 
@@ -37,7 +39,15 @@ class Article extends Model {
         $query->where('published_at', '<=', Carbon::now());
     }
 
-
+    /**
+     * El articulo pertenece a un usuario
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo('Sigesadmin\User');
+    }
 
 
 }

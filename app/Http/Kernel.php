@@ -16,6 +16,7 @@ class Kernel extends HttpKernel {
 		'Illuminate\Session\Middleware\StartSession',
 		'Illuminate\View\Middleware\ShareErrorsFromSession',
 		'Sigesadmin\Http\Middleware\VerifyCsrfToken',
+
 	];
 
 	/**
@@ -27,6 +28,7 @@ class Kernel extends HttpKernel {
 		'auth' => 'Sigesadmin\Http\Middleware\Authenticate',
 		'auth.basic' => 'Illuminate\Auth\Middleware\AuthenticateWithBasicAuth',
 		'guest' => 'Sigesadmin\Http\Middleware\RedirectIfAuthenticated',
+		'admin' => 'Sigesadmin\Http\Middleware\RedirectIfNotAdmin'
 	];
 
 }

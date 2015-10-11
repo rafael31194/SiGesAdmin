@@ -1,5 +1,6 @@
 <?php namespace Sigesadmin\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Sigesadmin\Article;
 use Sigesadmin\Http\Requests;
 use Sigesadmin\Http\Controllers\Controller;
@@ -8,6 +9,13 @@ use Illuminate\Http\Request;
 use Sigesadmin\Http\Requests\CreateArticleRequest;
 
 class PublicationController extends Controller {
+
+	public function __construct()
+	{
+		$this->middleware('auth');
+		$this->middleware('admin');
+	}
+
 
 	/**
 	 * Display a listing of the resource.
@@ -32,12 +40,17 @@ class PublicationController extends Controller {
 
 	/**
 	 * Store a newly created resource in storage.
-	 *
+	 *Asignando un usuario al articulo el user
+	 * logado
 	 * @return Response
 	 */
 	public function store(CreateArticleRequest $request)
 	{
-		Article::create($request->all());
+		$article = new Article($request->all());
+		//aqui es donde se le asigna el usuario al articulo
+		//articles se entuentra en User
+		Auth::user()->articles()->save($article);
+
 		return redirect('publicaciones');
 	}
 

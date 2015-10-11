@@ -24,7 +24,7 @@
                         <span><a href="#!" class="btn btn-danger">(eliminar)</a></span>
                     </h2>
                     <p class="lead">
-                        by <a href="index.php">Start Bootstrap</a>
+                        by <a href="index.php">{{$article->user->first_name.' '.$article->user->last_name}}</a>
                     </p>
                     <p><span class="glyphicon glyphicon-time"></span> Posted on {{$article->published_at}}</p>
                     <hr>

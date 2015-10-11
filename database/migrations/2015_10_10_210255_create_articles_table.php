@@ -12,14 +12,19 @@ class CreateArticlesTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('publication', function(Blueprint $table)
+		Schema::create('articles', function(Blueprint $table)
 		{
 			$table->increments('id');
 			$table->string('title');
 			$table->string('body');
+			$table->integer('user_id')->unsigned();;
 			$table->timestamp('published_at');
 			$table->nullableTimestamps();
 
+			$table->foreign('user_id')
+				->references('id')
+				->on('users')
+				->onDelete('cascade');
 
 		});
 	}
@@ -31,7 +36,7 @@ class CreateArticlesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('publication');
+		Schema::drop('articles');
 	}
 
 }

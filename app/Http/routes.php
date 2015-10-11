@@ -14,6 +14,8 @@
 Route::get('/', 'WelcomeController@index');
 Route::get('home', 'HomeController@index');
 
+
+//Diferent way to represent de routes
 Route::controllers([
 	'users' => 'UserController',
 	'auth' => 'Auth\AuthController',
@@ -28,6 +30,7 @@ Route::group(['prefix' => 'admin','namespace'=>'admin'],function(){
 });
 
 Route::resource('publicaciones','PublicationController');
+
 
 
 
